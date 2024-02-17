@@ -4,9 +4,20 @@ let tabs = document.querySelectorAll(".task-tabs div");
 let taskList = [];
 let mode = 'all';
 let filterList = [];
+let enterCheck = document.querySelector("#task-input");
+let underLine = document.getElementById("under-line");
 
 addButton.addEventListener("click", addTask);
 
+enterCheck.addEventListener("keydown", (event) => {
+    addButton.disabled = false;
+    if (event.key == "Enter" && taskInput.value == "") {
+      addButton.disabled = true;
+      return;
+    } else if (event.key == "Enter" && !taskInput.value == "") {
+      addTask();
+    }
+  });
 
 for(let i=1;i<tabs.length;i++){
     tabs[i].addEventListener("click", function(event){
@@ -31,7 +42,6 @@ function render (){
     }else if(mode === "ongoing" || mode === "done"){
         list = filterList;
     }
-
 
     let resultHTML = '';
     for(let i=0;i<list.length;i++){
@@ -103,3 +113,15 @@ function filter(event){
 function randomIDGenerate(){
     return '_' + Math.random().toString(36).substr(2, 9);
 }
+
+function filter(event) {
+    if (event) {
+      mode = event.target.id;  
+      underLine.style.width = event.target.offsetWidth + "px" ;
+      underLine.style.left = event.target.offsetLeft + "px" ;
+      underLine.style.top = event.target.offsetTop + (event.targetHeight - 4) + "px";
+    }
+    
+    console.log(mode);
+    modeSorting();
+  }

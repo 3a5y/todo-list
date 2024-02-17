@@ -5,13 +5,14 @@ body {
 }
 
 .container {
-    background-color: white;
+    background-color: #EEF5FF;
     min-height: 100vh;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .task-area {
     border: 1px solid lightgray;
+    position: relative;
 }
 
 .task-tabs {
@@ -27,20 +28,30 @@ body {
 
 #under-line {
     height: 4px;
-    background-color: pink;
+    background-color: #F7B787;
     position: absolute;
     width: 50px;
     left: 0px;
     top: 52px;
     padding: 0px;
+    transition: 0.5s;
 }
 
 .task {
     display: flex;
     justify-content: space-between;
     padding: 1em;
+    flex-grow: 1;
 }
 
 .task-done {
+    display: flex;
     text-decoration: line-through;
+    background-color: #F7B787;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+#task-input {
+    width: 210px;
 }
